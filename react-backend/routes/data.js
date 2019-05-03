@@ -26,11 +26,10 @@ connection.connect(function(err) {
 router.get('/', function(req, res, next) {
 	// Comment out this line:
   //res.send('respond with a resource');
-  connection.query('SELECT * from film', function (error, results, fields) {
-    console.log(results);
+  connection.query('SELECT * from films', function (error, results, fields) {
 		if (error) throw error;
     res.json(results);
-    
+    s
   });
   // And insert something like this instead:
 
