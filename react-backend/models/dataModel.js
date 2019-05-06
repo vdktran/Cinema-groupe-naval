@@ -7,9 +7,10 @@ var Data = function(data) {
     this.id = data.id;
 }
 
-// Define Object method
+// Define Object method to be used by a Controller
 Data.getAllData = function (result) {
 
+    // Database query
     sql.query('SELECT * from films', function (err, res, fields) {
 		if (err) throw err;
         result(null, res);

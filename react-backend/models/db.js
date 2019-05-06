@@ -1,4 +1,4 @@
-// Set up Default Database Connection
+// Set up the default Database Connection
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -18,5 +18,5 @@ exports.connect = connection.connect(function(err) {
   console.log('connected as id ' + connection.threadId);
 });
 
-// Export DB connection
+// Export DB connection (to the models)
 module.exports = connection;
