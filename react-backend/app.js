@@ -6,8 +6,28 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var dataRouter = require('./routes/data');
+var seancesRouter = require('./routes/seances');
 
 var app = express();
+
+// Database connection
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  port: 3306,
+  password : '',
+  database: "navaldb"
+});
+
+connection.connect(function(err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+  }
+
+  console.log('connected as id ' + connection.threadId);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +39,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/index', indexRouter);
 app.use('/data', dataRouter);
+app.use('/seances', seancesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
