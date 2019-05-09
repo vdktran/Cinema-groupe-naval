@@ -18,5 +18,5 @@ Data.getAllData = function (result) {
 
 };
 
-// Export Object
+// Export Object to Controller
 module.exports = Data;
