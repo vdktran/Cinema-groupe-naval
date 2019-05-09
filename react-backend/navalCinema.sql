@@ -2,7 +2,7 @@ CREATE DATABASE navalDB CHARACTER SET 'utf8';
 
 USE navalDB;
 
-CREATE TABLE film (
+CREATE TABLE films (
     film_id INT PRIMARY KEY AUTO_INCREMENT,
     titre VARCHAR (250),
     genre_id INT,
@@ -16,20 +16,20 @@ CREATE TABLE film (
 )
 ENGINE=INNODB;
 
-INSERT INTO film
+INSERT INTO films
 VALUES  (NULL, 'Avengers: End Game', 1, 3, 1, '2019-04-25', "c'est bien", 2, 'afficheAvengers.jpg', 'bakcgroundAvengers.jpg'),
   (NULL, 'Coeurs Ennenmis', 2, 3, 1, '2019-05-01', "c'est bof", 2, 'afficheCoeursEnnenmis.jpg', 'bakcgroundCoeursEnnenmis.jpg'),
   (NULL, 'Gloria Bell', 2, 3, 1, '2019-04-25', "c'est pas mal", 2, 'afficheGloriaBell.jpg', 'bakcgroundGloriaBell.jpg'),
   (NULL, 'Tanguy, Le Retour', 3, 3, 1, '2019-04-10', "c'est super", 2, 'afficheTanguyLeRetour.jpg', 'bakcgroundTanguyLeRetour.jpg'),
   (NULL, 'Le Parc Des Merveilles', 5, 3, 1, '2019-04-03', "c'est kiffant", 2, 'afficheLeParcDesMerveilles.jpg', 'bakcgroundLeParcDesMerveilles.jpg');
 
-CREATE TABLE genre (
+CREATE TABLE genres (
     genre_id INT PRIMARY KEY AUTO_INCREMENT,
     genre_name VARCHAR (30)
 )
 ENGINE=INNODB;
 
-INSERT INTO genre
+INSERT INTO genres
 VALUES  (NULL, 'Action'),
         (NULL, 'Drame'),
         (NULL, 'Comedie'),
@@ -37,13 +37,13 @@ VALUES  (NULL, 'Action'),
         (NULL, 'Animation'),
         (NULL, 'Thriller');
 
-CREATE TABLE dimension (
+CREATE TABLE dimensions (
     dimension_id INT PRIMARY KEY AUTO_INCREMENT,
     dimension_name VARCHAR (5)
 )
 ENGINE=INNODB;
 
-INSERT INTO dimension 
+INSERT INTO dimensions 
 VALUES (NULL, '2D'),
        (NULL, '3D'),
        (NULL, '2D/3D');
@@ -59,13 +59,13 @@ VALUES (NULL, 'VO'),
        (NULL, 'VF'),
        (NULL, 'VO/VF');
 
-CREATE TABLE statut (
+CREATE TABLE statuts (
     statut_id INT PRIMARY KEY AUTO_INCREMENT,
     statut_name VARCHAR (15)
 )
 ENGINE=INNODB;
 
-INSERT INTO statut
+INSERT INTO statuts
 VALUES (NULL, 'Retiré'),
        (NULL, "A l'affiche"),
        (NULL, 'A venir');
@@ -157,23 +157,23 @@ VALUES (NULL, 'fueijf@gmail.com'),
 
 /* Foreign keys */
 
-ALTER TABLE film
-ADD FOREIGN KEY (genre_id) REFERENCES genre (genre_id);
+ALTER TABLE films
+ADD FOREIGN KEY (genre_id) REFERENCES genres (genre_id);
 
-ALTER TABLE film
+ALTER TABLE films
 ADD FOREIGN KEY (langue_id) REFERENCES langues (langue_id);
 
-ALTER TABLE film
-ADD FOREIGN KEY (dimension_id) REFERENCES dimension (dimension_id);
+ALTER TABLE films
+ADD FOREIGN KEY (dimension_id) REFERENCES dimensions (dimension_id);
 
-ALTER TABLE film
-ADD FOREIGN KEY (statut_id) REFERENCES statut (statut_id);
+ALTER TABLE films
+ADD FOREIGN KEY (statut_id) REFERENCES statuts (statut_id);
 
 ALTER TABLE seances
 ADD FOREIGN KEY (salle_id) REFERENCES salles (salle_id);
 
 ALTER TABLE seances
-ADD FOREIGN KEY (film_id) REFERENCES film (film_id);
+ADD FOREIGN KEY (film_id) REFERENCES films (film_id);
 
 ALTER TABLE reservations
 ADD FOREIGN KEY (users_id) REFERENCES users (users_id);
@@ -188,5 +188,4 @@ ALTER TABLE critiques
 ADD FOREIGN KEY (users_id) REFERENCES users (users_id);
 
 ALTER TABLE critiques
-ADD FOREIGN KEY (film_id) REFERENCES film (film_id);
-
+ADD FOREIGN KEY (film_id) REFERENCES films (film_id);
