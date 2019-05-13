@@ -9,7 +9,7 @@ var logger = require('morgan');
 
 // Require Routes
 var indexRouter = require('./routes/index');
-var dataRouter = require('./routes/dataRoute');
+var filmsRouter = require('./routes/filmsRoute');
 
 
 var app = express();
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Use Routes
 app.use('/', indexRouter);
-app.use('/data', dataRouter);
+app.use('/films', filmsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

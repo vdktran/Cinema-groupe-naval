@@ -1,0 +1,9 @@
+img {
+    width: 215px;
+    height: 290px;
+}
+
+.Img_gallery {
+    display:flex;
+    flex-direction: row;
+}

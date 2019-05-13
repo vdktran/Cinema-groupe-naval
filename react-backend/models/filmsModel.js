@@ -3,12 +3,12 @@
 var sql = require('./db.js');
 
 // Define an Object constructor
-var Data = function(data) {
+var Films = function(data) {
     this.id = data.id;
 }
 
 // Define Object method to be used by a Controller
-Data.getAllData = function (result) {
+Films.getAllFilms = function (result) {
 
     // Database query
     sql.query('SELECT * from films', function (err, res, fields) {
@@ -18,5 +18,6 @@ Data.getAllData = function (result) {
 
 };
 
+
 // Export Object to Controller
-module.exports = Data;
+module.exports = Films;
