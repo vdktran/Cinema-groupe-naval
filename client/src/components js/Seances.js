@@ -4,7 +4,7 @@ import './Seances.css';
 class Seances extends Component {
   constructor(props) {
     super(props);
-    this.state = {films: []};
+    this.state = {seances: []};
   }
 
   handleClick = () => {
@@ -14,16 +14,17 @@ class Seances extends Component {
   componentDidMount() {
     fetch('/seances')
       .then(res => res.json())
-      .then(films => this.setState({ films }));
+      .then(films => this.setState({ seances }));
   }
 
   render() {
     return (
       <div className="Seances_wrapper">
-        <div className="Img_gallery">
-        {this.state.films.map(film =>
-          <div key={film.film_id} className="Img_container">
+        <div className="Seances_gallery">
+        {this.state.seances.map(film =>
+          <div key={film.film_id} className="_container">
           <img key={film.film_id} src={film.img_affiche}></img>
+            this.state.seances.map()
           </div>
         )}
         </div>

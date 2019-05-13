@@ -10,6 +10,7 @@ var logger = require('morgan');
 // Require Routes
 var indexRouter = require('./routes/index');
 var filmsRouter = require('./routes/filmsRoute');
+var seancesRouter = require('./routes/seancesRoute')
 
 
 var app = express();
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use Routes
 app.use('/', indexRouter);
 app.use('/films', filmsRouter);
+app.use('/seances', seancesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
