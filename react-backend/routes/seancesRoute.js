@@ -8,6 +8,7 @@ var router = express.Router();
 
 // GET Data using Express router and a method defined in the Controller
 router.get('/', seances_controller.display_all_seances);
+router.get('/seancesoftheday', seances_controller.display_all_seances);
 
 
 // Export Router to app.js

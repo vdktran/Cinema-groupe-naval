@@ -18,6 +18,54 @@ Seances.getAllSeances = function (result) {
 
 };
 
+Seances.getSeancesOfTheDay = function (result) {
+
+  var date = new Date();
+  var dayinteger = date.getDay();
+  function day() {
+  switch(dayinteger) {
+    case 0 :
+    var day = 'Lundi';
+    break;
+
+    case 1 :
+    var day = 'Mardi';
+    break;
+
+    case 2 :
+    var day = 'Mercredi';
+    break;
+
+    case 3 :
+    var day = 'Jeudi';
+    break;
+
+    case 4 :
+    var day = 'Vendredi';
+    break;
+
+    case 5 :
+    var day = 'Samedi';
+    break;
+
+    case 6 :
+    var day = 'Dimanche';
+    break;
+
+  }
+
+  return day;
+}
+  var queryOfTeDay = 'SELECT * from films NATURAL JOIN seances WHERE weekday='+day();
+
+  // Database query
+  sql.query(queryOfTeDay, function (err, res, fields) {
+  if (err) throw err;
+      result(null, res);
+});
+
+};
+
 
 // Export Object to Controller
 module.exports = Seances;

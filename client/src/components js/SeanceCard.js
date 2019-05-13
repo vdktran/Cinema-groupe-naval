@@ -1,28 +1,16 @@
 import React, {Component} from 'react';
-import './Seances.css';
+import './SeanceCard.css';
 
-class Seances extends Component {
+class SeanceCard extends Component {
   constructor(props) {
     super(props);
     this.state = {seances: []};
   }
 
-  handleClick = () => {
-    
-  };
-
-  renderSeances () {
-    
-      if () {
-
-      }
-
-    };
-
   componentDidMount() {
     fetch('/seances')
       .then(res => res.json())
-      .then(films => this.setState({ seances }));
+      .then(seances => this.setState({ seances }));
   }
 
   render() {
@@ -40,4 +28,4 @@ class Seances extends Component {
   }
 }
 
-export default Seances;
+export default SeanceCard;

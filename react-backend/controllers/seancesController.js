@@ -16,3 +16,4 @@ exports.display_all_seances = function (req, res) {
     })
 
   };
+

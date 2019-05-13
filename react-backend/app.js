@@ -10,7 +10,8 @@ var logger = require('morgan');
 // Require Routes
 var indexRouter = require('./routes/index');
 var filmsRouter = require('./routes/filmsRoute');
-var seancesRouter = require('./routes/seancesRoute')
+var seancesRouter = require('./routes/seancesRoute');
+
 
 
 var app = express();
