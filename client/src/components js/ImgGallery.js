@@ -20,7 +20,7 @@ class ImgGallery extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Film</h1>
+        <h1>Image Gallery</h1>
         <div className="Img_gallery">
         {this.state.films.map(film =>
           <div key={film.film_id} className="Img_container">
