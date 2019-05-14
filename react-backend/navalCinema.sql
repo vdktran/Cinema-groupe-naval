@@ -11,8 +11,9 @@ CREATE TABLE films (
     date_de_sortie DATE,
     synopsis VARCHAR (1000),
     statut_id INT,
-    img_affiche VARCHAR(50),
-    img_background VARCHAR(50)
+    img_affiche VARCHAR(200),
+    img_background VARCHAR(200),
+    img_slider VARCHAR (200)
 )
 ENGINE=INNODB;
 
@@ -75,8 +76,10 @@ CREATE TABLE seances (
     salle_id INT,
     film_id INT,
     date_du_jour DATE,
+    dayweek VARCHAR(20),
     horaire TIME,
     dimension VARCHAR(5),
+    langue_id INT,
     place_dispo INT
 )
 ENGINE=INNODB;
@@ -155,6 +158,18 @@ INSERT INTO newsletter
 VALUES (NULL, 'fueijf@gmail.com'),
        (NULL, 'azertyuiop@hotmail.fr');
 
+CREATE TABLE contacts (
+    contact_id INT PRIMARY KEY AUTO_INCREMENT,
+    contact_pseudo VARCHAR (50),
+    contact_objet VARCHAR (50),
+    contact_message VARCHAR (500)
+)
+ENGINE=INNODB;
+
+INSERT INTO contacts
+VALUES (NULL, 'pseudo1', 'probleme avec un truc', "Salut j'ai un problème ca marche pas aidez moi svp"),
+       (NULL, 'pseudo2', 'ça marche pas lol', 'pk sa marchent pa tn cite?');
+
 /* Foreign keys */
 
 ALTER TABLE films
@@ -174,6 +189,9 @@ ADD FOREIGN KEY (salle_id) REFERENCES salles (salle_id);
 
 ALTER TABLE seances
 ADD FOREIGN KEY (film_id) REFERENCES films (film_id);
+
+ALTER TABLE seances
+ADD FOREIGN KEY (langue_id) REFERENCES langues (langue_id);
 
 ALTER TABLE reservations
 ADD FOREIGN KEY (users_id) REFERENCES users (users_id);
