@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
+import ImgGallery from './components js/ImgGallery';
+import Contact from './components js/Contact.js';
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +10,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/data')
+    fetch('/films')
       .then(res => res.json())
       .then(films => this.setState({ films }));
   }
@@ -16,10 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Films</h1>
-        {this.state.films.map(film =>
-          <div key={film.film_id}>{film.titre}</div>
-        )}
+        <Contact/>
       </div>
     );
   }
