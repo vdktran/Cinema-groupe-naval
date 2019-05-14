@@ -18,11 +18,11 @@ CREATE TABLE films (
 ENGINE=INNODB;
 
 INSERT INTO films
-VALUES  (NULL, 'Avengers: End Game', 1, 3, 1, '2019-04-25', "c'est bien", 2, 'afficheAvengers.jpg', 'bakcgroundAvengers.jpg'),
-  (NULL, 'Coeurs Ennenmis', 2, 3, 1, '2019-05-01', "c'est bof", 2, 'afficheCoeursEnnenmis.jpg', 'bakcgroundCoeursEnnenmis.jpg'),
-  (NULL, 'Gloria Bell', 2, 3, 1, '2019-04-25', "c'est pas mal", 2, 'afficheGloriaBell.jpg', 'bakcgroundGloriaBell.jpg'),
-  (NULL, 'Tanguy, Le Retour', 3, 3, 1, '2019-04-10', "c'est super", 2, 'afficheTanguyLeRetour.jpg', 'bakcgroundTanguyLeRetour.jpg'),
-  (NULL, 'Le Parc Des Merveilles', 5, 3, 1, '2019-04-03', "c'est kiffant", 2, 'afficheLeParcDesMerveilles.jpg', 'bakcgroundLeParcDesMerveilles.jpg');
+VALUES  (NULL, 'Avengers: End Game', 1, 3, 1, '2019-04-25', "c'est bien", 2, 'afficheAvengers.jpg', 'bakcgroundAvengers.jpg', NULL),
+  (NULL, 'Coeurs Ennenmis', 2, 3, 1, '2019-05-01', "c'est bof", 2, 'afficheCoeursEnnenmis.jpg', 'bakcgroundCoeursEnnenmis.jpg', NULL),
+  (NULL, 'Gloria Bell', 2, 3, 1, '2019-04-25', "c'est pas mal", 2, 'afficheGloriaBell.jpg', 'bakcgroundGloriaBell.jpg', NULL),
+  (NULL, 'Tanguy, Le Retour', 3, 3, 1, '2019-04-10', "c'est super", 2, 'afficheTanguyLeRetour.jpg', 'bakcgroundTanguyLeRetour.jpg', NULL),
+  (NULL, 'Le Parc Des Merveilles', 5, 3, 1, '2019-04-03', "c'est kiffant", 2, 'afficheLeParcDesMerveilles.jpg', 'bakcgroundLeParcDesMerveilles.jpg', NULL);
 
 CREATE TABLE genres (
     genre_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -85,7 +85,7 @@ CREATE TABLE seances (
 ENGINE=INNODB;
 
 INSERT INTO seances
-VALUES (NULL, 4, 1, '2019-05-02', '12:45:00', '2D', 300);
+VALUES (NULL, 4, 1, '2019-06-03', 'Lundi' ,'12:45:00', '2D', 1, 300);
 
 CREATE TABLE salles (
     salle_id INT PRIMARY KEY AUTO_INCREMENT,
