@@ -16,19 +16,21 @@ CREATE TABLE films (
 (1000),
     statut_id INT,
     img_affiche VARCHAR
-(50),
+(200),
     img_background VARCHAR
-(50)
+(200),
+    img_slider VARCHAR
+(200)
 )
 ENGINE=INNODB;
 
 INSERT INTO films
 VALUES
-    (NULL, 'Avengers: End Game', 1, 3, 1, '2019-04-25', "c'est bien", 2, 'afficheAvengers.jpg', 'bakcgroundAvengers.jpg'),
-    (NULL, 'Coeurs Ennenmis', 2, 3, 1, '2019-05-01', "c'est bof", 2, 'afficheCoeursEnnenmis.jpg', 'bakcgroundCoeursEnnenmis.jpg'),
-    (NULL, 'Gloria Bell', 2, 3, 1, '2019-04-25', "c'est pas mal", 2, 'afficheGloriaBell.jpg', 'bakcgroundGloriaBell.jpg'),
-    (NULL, 'Tanguy, Le Retour', 3, 3, 1, '2019-04-10', "c'est super", 2, 'afficheTanguyLeRetour.jpg', 'bakcgroundTanguyLeRetour.jpg'),
-    (NULL, 'Le Parc Des Merveilles', 5, 3, 1, '2019-04-03', "c'est kiffant", 2, 'afficheLeParcDesMerveilles.jpg', 'bakcgroundLeParcDesMerveilles.jpg');
+    (NULL, 'Avengers: End Game', 1, 3, 1, '2019-04-25', "c'est bien", 2, 'afficheAvengers.jpg', 'bakcgroundAvengers.jpg', NULL),
+    (NULL, 'Coeurs Ennenmis', 2, 3, 1, '2019-05-01', "c'est bof", 2, 'afficheCoeursEnnenmis.jpg', 'bakcgroundCoeursEnnenmis.jpg', NULL),
+    (NULL, 'Gloria Bell', 2, 3, 1, '2019-04-25', "c'est pas mal", 2, 'afficheGloriaBell.jpg', 'bakcgroundGloriaBell.jpg', NULL),
+    (NULL, 'Tanguy, Le Retour', 3, 3, 1, '2019-04-10', "c'est super", 2, 'afficheTanguyLeRetour.jpg', 'bakcgroundTanguyLeRetour.jpg', NULL),
+    (NULL, 'Le Parc Des Merveilles', 5, 3, 1, '2019-04-03', "c'est kiffant", 2, 'afficheLeParcDesMerveilles.jpg', 'bakcgroundLeParcDesMerveilles.jpg', NULL);
 
 CREATE TABLE genres (
     genre_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -90,16 +92,19 @@ CREATE TABLE seances (
     salle_id INT,
     film_id INT,
     date_du_jour DATE,
+    dayweek VARCHAR
+(20),
     horaire TIME,
     dimension VARCHAR
 (5),
+    langue_id INT,
     place_dispo INT
 )
 ENGINE=INNODB;
 
 INSERT INTO seances
 VALUES
-    (NULL, 4, 1, '2019-05-02', '12:45:00', '2D', 300);
+    (NULL, 4, 1, '2019-06-03', 'Lundi' , '12:45:00', '2D', 1, 300);
 
 CREATE TABLE salles (
     salle_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -183,6 +188,22 @@ VALUES
     (NULL, 'fueijf@gmail.com'),
     (NULL, 'azertyuiop@hotmail.fr');
 
+CREATE TABLE contacts (
+    contact_id INT PRIMARY KEY AUTO_INCREMENT,
+    contact_pseudo VARCHAR
+(50),
+    contact_objet VARCHAR
+(50),
+    contact_message VARCHAR
+(500)
+)
+ENGINE=INNODB;
+
+INSERT INTO contacts
+VALUES
+    (NULL, 'pseudo1', 'probleme avec un truc', "Salut j'ai un problème ca marche pas aidez moi svp"),
+    (NULL, 'pseudo2', 'ça marche pas lol', 'pk sa marchent pa tn cite?');
+
 /* Foreign keys */
 
 ALTER TABLE films
@@ -202,6 +223,9 @@ ADD FOREIGN KEY (salle_id) REFERENCES salles (salle_id);
 
 ALTER TABLE seances
 ADD FOREIGN KEY (film_id) REFERENCES films (film_id);
+
+ALTER TABLE seances
+ADD FOREIGN KEY (langue_id) REFERENCES langues (langue_id);
 
 ALTER TABLE reservations
 ADD FOREIGN KEY (users_id) REFERENCES users (users_id);
