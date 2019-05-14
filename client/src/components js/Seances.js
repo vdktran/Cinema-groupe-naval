@@ -7,22 +7,10 @@ class Seances extends Component {
     this.state = {seances: []};
   }
 
-  handleClick = () => {
-    
-  };
-
-  renderSeances () {
-    
-      if () {
-
-      }
-
-    };
-
   componentDidMount() {
-    fetch('/seances')
+    fetch('/seances/seancesoftheday')
       .then(res => res.json())
-      .then(films => this.setState({ seances }));
+      .then(seances => this.setState({ seances }));
   }
 
   render() {

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
-import SeancesTab from './components js/SeancesTab.js';
+import SeanceCard from './components js/SeanceCard.js';
 
 class App extends Component {
   
   render() {
     return (
       <div className="App">
-        <SeancesTab></SeancesTab>
+        <SeanceCard></SeanceCard>
       </div>
     );
   }

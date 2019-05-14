@@ -6,7 +6,7 @@ var Seances = require('../models/seancesModel');
 exports.display_all_seances = function (req, res) {
 
     // Use a method defined in the Model
-    Films.getAllSeances(function(err, data){
+    Seances.getAllSeances(function(err, data){
         if (err) {
             res.send(err);
         }
@@ -17,3 +17,16 @@ exports.display_all_seances = function (req, res) {
 
   };
 
+  exports.display_seances_of_the_day = function (req, res) {
+
+    // Use a method defined in the Model
+    Seances.getSeancesOfTheDay(function(err, data){
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json(data);
+        }
+    })
+
+  };

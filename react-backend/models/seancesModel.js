@@ -24,42 +24,43 @@ Seances.getSeancesOfTheDay = function (result) {
   var dayinteger = date.getDay();
   function day() {
   switch(dayinteger) {
-    case 0 :
-    var day = 'Lundi';
-    break;
-
     case 1 :
-    var day = 'Mardi';
+    var day ='Lundi';
     break;
 
     case 2 :
-    var day = 'Mercredi';
+    var day ='Mardi';
     break;
 
     case 3 :
-    var day = 'Jeudi';
+    var day ='Mercredi';
     break;
 
     case 4 :
-    var day = 'Vendredi';
+    var day ='Jeudi';
     break;
 
     case 5 :
-    var day = 'Samedi';
+    var day ='Vendredi';
     break;
 
     case 6 :
-    var day = 'Dimanche';
+    var day ='Samedi';
+    break;
+
+    case 0 :
+    var day ='Dimanche';
     break;
 
   }
 
   return day;
 }
-  var queryOfTeDay = 'SELECT * from films NATURAL JOIN seances WHERE weekday='+day();
+  
+  var queryOfTeDay =day();
 
   // Database query
-  sql.query(queryOfTeDay, function (err, res, fields) {
+  sql.query('SELECT * from films INNER JOIN seances ON films.film_id = seances.film_id WHERE seances.dayweek=?',[queryOfTeDay], function (err, res, fields) {
   if (err) throw err;
       result(null, res);
 });

@@ -8,7 +8,7 @@ class SeanceCard extends Component {
   }
 
   componentDidMount() {
-    fetch('/seances')
+    fetch('/seances/seancesoftheday')
       .then(res => res.json())
       .then(seances => this.setState({ seances }));
   }
@@ -20,6 +20,7 @@ class SeanceCard extends Component {
         {this.state.seances.map(film =>
           <div key={film.film_id} className="Seances_card">
           <img key={film.film_id} src={film.img_affiche}></img>
+          <button></button>
           </div>
         )}
         </div>

@@ -32,7 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use Routes
 app.use('/', indexRouter);
 app.use('/films', filmsRouter);
-app.use('/seances', seancesRouter)
+app.use('/seances', seancesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
