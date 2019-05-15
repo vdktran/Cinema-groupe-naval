@@ -9,11 +9,11 @@ class App extends Component {
     this.state = {films: []};
   }
 
-  componentDidMount() {
-    fetch('/films')
-      .then(res => res.json())
-      .then(films => this.setState({ films }));
-  }
+  // componentDidMount() {
+  //   fetch('/films')
+  //     .then(res => res.json())
+  //     .then(films => this.setState({ films }));
+  // }
 
   render() {
     return (

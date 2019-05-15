@@ -7,24 +7,17 @@ class Contact extends Component {
         this.state = {
             pseudo: '',
             object: '',
-            message: ''
+            message: '',
         }
-/*         this.postContact = this.postContact.bind(this) */
+        this.postContact = this.postContact.bind(this);
     }
 
-/*     postContact(event) {
-        event.preventDefault()
-        var data = {
-            pseudo: this.state.pseudo,
-            object: this.state.object,
-            message: this.state.message,
-            msg: this.state.msg
-        }
-        console.log(data)
+    postContact(event) {
+        event.preventDefault();
         fetch("/contact", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
+            body: JSON.stringify(this.state)
         }).then(function(response) {
             if (response.status >= 400) {
               throw new Error("Bad response from server");
@@ -32,33 +25,27 @@ class Contact extends Component {
             return response.json();
         }).then(function(data) {
             console.log(data)    
-            if(data == "success"){
+            if(data === "success"){
                this.setState({msg: "Thanks for registering"});  
             }
         }).catch(function(err) {
             console.log(err)
         });
-    } */
-
-    stockData(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })  
-    }
+    } 
 
 
     render() {
         return (
             <form autoComplete="off" onSubmit={this.postContact} method="POST">
                 <label> Pseudo : </label>
-                <input id="pseudo"  name="pseudo" onChange={this.stockData} value='' type="text"/>
+                <input id="pseudo"  name="pseudo" onChange={e => this.setState({ pseudo: e.target.value })} value={this.state.pseudo} type="text"/>
 
                 <label> Objet du message : </label>
-                <input id="object"  name="object" onChange={this.stockData} value='' type="text"/>
+                <input id="object"  name="object" onChange={e => this.setState({ object: e.target.value })} value={this.state.object} type="text"/>
 
                 <label> Message : </label>
-                <input id="message"  name= "message" onChange={this.stockData} value='' type="textarea"/>
-                <input type="button" value="valider"/>
+                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="textarea"/>
+                <input type="submit" value="valider"/>
             </form>
         );
     }

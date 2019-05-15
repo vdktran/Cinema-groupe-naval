@@ -8,7 +8,7 @@ var router = express.Router();
 
 
 // GET Data using Express router and a method defined in the Controller
-router.post('/contact', contacts_controller.display_all_contacts);
+router.post('/', contacts_controller.display_all_contacts);
 
 
 // Export Router to app.js
