@@ -1,0 +1,9 @@
+#AddFilms {
+    background-color: #006494;
+    border-radius: 5px;
+    width: 800px;
+    height: 425px;
+    position: absolute;
+    bottom: 75px;
+    text-align: left;
+}
