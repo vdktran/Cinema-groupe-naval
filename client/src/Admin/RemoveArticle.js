@@ -5,7 +5,7 @@ export default class RemoveArticle extends Component {
     render() {
       return (
         <div>
-            <h1> Remove </h1>
+            <div className="containerMenu"></div>
         </div>
       );
     }

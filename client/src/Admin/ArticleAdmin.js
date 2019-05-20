@@ -5,7 +5,7 @@ import AddArticle from './AddArticle';
 import UpdateArticle from './UpdateArticle';
 import RemoveArticle from './RemoveArticle';
 
-export default class SeancesAdmin extends Component {
+export default class ArticleAdmin extends Component {
   
     render() {
       return (

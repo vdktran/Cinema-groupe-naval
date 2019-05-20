@@ -116,7 +116,7 @@ ul {
 
 .ListFilmAdmin{
 	background-color: #247ba0;
-	overflow: auto;
+ 	overflow: auto;
 	border-radius: 5px;
 	height: 318px;
 	width: 788px;
@@ -129,6 +129,16 @@ ul {
 	margin: 0;
 	margin-left: 3px;
 	border-bottom: 1px solid #1f253d;
+}
+
+.containerMenu {
+	background-color: #006494;
+	border-radius: 5px;
+	width: 800px;
+	height: 425px;
+	position: absolute;
+	bottom: 75px;
+	text-align: left;
 }
 
 h1 {

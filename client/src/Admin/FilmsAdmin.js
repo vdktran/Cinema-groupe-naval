@@ -15,9 +15,9 @@ export default class FilmsAdmin extends Component {
         <header className="block">
         <Router>
           <FilmsAdminMenu/>
-          <Route exact path='/' component={AddFilms}/>
-          <Route path='/update' component={UpdateFilms}/>
-          <Route path='/remove' component={RemoveFilms}/>
+            <Route exact path='/' component={AddFilms}/>
+            <Route path='/update' component={UpdateFilms}/>
+            <Route path='/remove' component={RemoveFilms}/>
         </Router>
         </header>
       </div>

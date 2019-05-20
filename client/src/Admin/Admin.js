@@ -6,7 +6,7 @@ import FilmsAdmin from './FilmsAdmin';
 import BookingAdmin from './BookingAdmin';
 import NewsletterAdmin from './NewsletterAdmin';
 import MoreAdmin from './MoreAdmin';
-import Article from './ArticleAdmin';
+import ArticleAdmin from './ArticleAdmin';
 import './Admin.css';
 
 export default class Admin extends Component {
@@ -16,12 +16,12 @@ export default class Admin extends Component {
         <div className="AdminMenu">
         <Router>
           <AdminMenu/>
-          <Route exact path='/' component={SessionsAdmin} />
-          <Route path ='/Films' component={FilmsAdmin}/>
-          <Route path='/Reservations' component={BookingAdmin}/>
-          <Route path='/News' component={NewsletterAdmin}/>
-          <Route path='/Articles' component={Article}/>
-          <Route path='/Stats' component={MoreAdmin}/>
+            <Route exact path='/' component={SessionsAdmin} />
+            <Route path ='/Films' component={FilmsAdmin}/>
+            <Route path='/Reservations' component={BookingAdmin}/>
+            <Route path='/News' component={NewsletterAdmin}/>
+            <Route path='/Articles' component={ArticleAdmin}/>
+            <Route path='/Stats' component={MoreAdmin}/>
         </Router>
         </div>
       );

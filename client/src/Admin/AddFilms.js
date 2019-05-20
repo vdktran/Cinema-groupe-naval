@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import './AddFilms.css';
-import Popup from './AddFilmPopup.js';
+
+import AddFilmPopup from './AddFilmPopup.js';
 
 export default class AddFilms extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class AddFilms extends Component {
     render() {
       return (
         <div>
-            <div id="AddFilms">
+            <div className="containerMenu">
               <h1 className="titleCompo">Liste des films : </h1>
               <div className="ListFilmAdmin scrollbar" id="style-1">
                 {this.state.films.map(film =>
@@ -32,8 +32,8 @@ export default class AddFilms extends Component {
               </div>
               <button className="btn green rounded" onClick={this.togglePopup.bind(this)}> Ajouter </button>  
               {this.state.showPopup ?
-                <Popup   
-                  text='Ouais le popup ouais'  
+                <AddFilmPopup   
+                  text='Ajout'  
                   closePopup={this.togglePopup.bind(this)}
                 />  
                 : null  
