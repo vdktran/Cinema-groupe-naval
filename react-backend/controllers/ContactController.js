@@ -1,4 +1,3 @@
-
 // Controller Require Model
 var Contacts = require('../models/contactModel');
 
