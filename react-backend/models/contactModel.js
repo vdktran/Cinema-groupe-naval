@@ -1,4 +1,3 @@
-
 // Model require Database connection
 var sql = require('./db.js');
 
@@ -13,16 +12,18 @@ var Contacts = function(data) {
 // Define Object method to be used by a Controller
 Contacts.postAllContacts = function (newcontact, result) {
    var newcontacts= Object.values(newcontact);
+   var table = [
+     [ newcontacts[0], newcontacts[1] ,newcontacts[2] ]
+    ];
+   console.log(table);
 
-   console.log(newcontacts);
     // Database query
-    sql.query('INSERT INTO contacts (pseudo,object,message) VALUES ?',newcontacts,function (err, res, fields) {
-		if (err) throw err;
+    var query = 'INSERT INTO contacts (contact_pseudo,contact_objet,contact_message) VALUES ?'
+    
+  sql.query(query, [table],function (err, res, fields) {
+      if (err) throw err;
         result(null, res);
-  });
-
+  }); 
 };
-
-
 // Export Object to Controller
 module.exports = Contacts;
