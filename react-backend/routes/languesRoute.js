@@ -1,12 +1,14 @@
+
+
 // Route Require Controller
-var contacts_controller = require('../controllers/ContactController');
+var langue_controller = require('../controllers/languesController');
 
 var express = require('express');
 var router = express.Router();
 
 
 // GET Data using Express router and a method defined in the Controller
-router.post('/', contacts_controller.display_all_contacts);
+router.get('/', langue_controller.display_All_Langue);
 
 
 // Export Router to app.js

@@ -1,6 +1,7 @@
 // Set up the default Database Connection
 
-var mysql      = require('mysql');
+var mysql = require('mysql');
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
