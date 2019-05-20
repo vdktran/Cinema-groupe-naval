@@ -1,0 +1,12 @@
+.Home {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    width: 50%;
+    height: 600px;
+    float:right;
+
+}
