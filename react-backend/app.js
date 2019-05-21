@@ -10,9 +10,16 @@ var logger = require('morgan');
 // Require Routes
 var indexRouter = require('./routes/index');
 var filmsRouter = require('./routes/filmsRoute');
-var contactRouter = require('./routes/contactRoute');
+var contactPostRouter = require('./routes/contactPostRoute');
 var genreRouter = require('./routes/genreRoute');
 var langueRouter = require('./routes/languesRoute');
+var statusRouter = require('./routes/statusRoute');
+var dimensionRouter = require('./routes/dimensionRoute');
+var sessionRouter = require('./routes/sessionRoute');
+var salleRouter = require('./routes/sallesRoute');
+var sessionPostRouter = require('./routes/sessionPostRoute');
+var prixRouter = require('./routes/prixRoute');
+var reservationRouter = require('./routes/reservationRoute');
 
 
 var app = express();
@@ -33,9 +40,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use Routes
 app.use('/', indexRouter);
 app.use('/films', filmsRouter);
-app.use('/contact', contactRouter);
+app.use('/contactpost', contactPostRouter);
 app.use('/genres', genreRouter);
 app.use('/langues', langueRouter);
+app.use('/status', statusRouter);
+app.use('/dimension', dimensionRouter);
+app.use('/seances', sessionRouter);
+app.use('/salles', salleRouter);
+app.use('/seancesPost', sessionPostRouter);
+app.use('/prix', prixRouter);
+app.use('/reservations', reservationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
