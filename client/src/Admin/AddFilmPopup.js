@@ -1,20 +1,27 @@
 import React, {Component} from 'react';  
+import SelectFormGenre from './SelectFormGenre';
+import SelectFormLangue from './SelectFormLangue';
+import SelectFormDimension from './SelectFormDimension';
+import SelectFormStatus from './SelectFormStatus';
 
 
-class AddFilmPopup extends React.Component { 
+export default class AddFilmPopup extends React.Component { 
     constructor(props) {
         super(props)
         this.state = {
-            pseudo: '',
-            object: '',
-            message: '',
-        }
+            title: '', 
+            date: '',
+            synopsis: '',
+            imgPoster: '',
+            imgBackground: '',
+            imgSlider: ''
+        };
         this.postContact = this.postContact.bind(this);
     }
 
     postContact(event) {
         event.preventDefault();
-        fetch("/film", {
+        fetch("/films", {
             method: 'POST',
             /* headers: {'Content-Type': 'application/json'}, */
             body: JSON.stringify(this.state)
@@ -40,40 +47,30 @@ class AddFilmPopup extends React.Component {
             <h1>{this.props.text}</h1>
             <form autoComplete="off" onSubmit={this.postContact} method="POST">
                 <label> Titre : </label>
-                <input id="pseudo"  name="pseudo" onChange={e => this.setState({ pseudo: e.target.value })} value={this.state.pseudo} type="text"/>
+                <input id="titreAddFilm"  name="titre" onChange={e => this.setState({ title: e.target.value })} value={this.state.title} type="text"/>
 
-                <label> Genre : </label>
-                <input id="object"  name="object" onChange={e => this.setState({ object: e.target.value })} value={this.state.object} type="text"/>
-
-                <label> Langue : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
-
-                <label> Dimension : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
+                <SelectFormGenre/>
+           
+                <SelectFormLangue/>
+                    
+                <SelectFormDimension/>
 
                 <label> Date de sortie : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
+                <input id="dateDeSortieAddFilm"  name= "dateSortie" onChange={e => this.setState({ date: e.target.value })} value={this.state.message} type="text"/>
 
                 <label> Synopsis : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
+                <input id="synopsisAddFilm"  name= "synopsis" onChange={e => this.setState({ synopsis: e.target.value })} value={this.state.message} type="text"/>
 
-                <label> Langue : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
-
-                <label> Status : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
-
-                <label> Langue : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
+                <SelectFormStatus/>
 
                 <label> Image Affiche : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
+                <input id="imgAfficheAddFilm"  name= "imgAffiche" onChange={e => this.setState({ imgPoster: e.target.value })} value={this.state.message} type="text"/>
 
                 <label> Image Background : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
+                <input id="imgBackgroundAddFilm"  name= "imgBackground" onChange={e => this.setState({ imgBackground: e.target.value })} value={this.state.message} type="text"/>
 
                 <label> Image Slider : </label>
-                <input id="message"  name= "message" onChange={e => this.setState({ message: e.target.value })} value={this.state.message} type="text"/>
+                <input id="imgSliderAddFilm"  name= "imgSlider" onChange={e => this.setState({ imgSlider: e.target.value })} value={this.state.message} type="text"/>
 
                 <input type="submit" value="valider"/>
             </form>
@@ -82,6 +79,4 @@ class AddFilmPopup extends React.Component {
     </div>  
 );  
 }  
-}  
-
-export default AddFilmPopup;
+};

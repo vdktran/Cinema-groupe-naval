@@ -4,13 +4,13 @@ import AddSessionPopup from './AddSessionPopup.js';
 export default class AddSession extends Component {
   constructor(props) {
     super(props);
-    this.state = {films: []};
+    this.state = {sessions: []};
   }
 
   componentDidMount() {
-    fetch('/films')
+    fetch('/seances')
       .then(res => res.json())
-      .then(films => this.setState({ films }));
+      .then(sessions => this.setState({ sessions }));
   }
 
   togglePopup() {  
@@ -23,16 +23,16 @@ export default class AddSession extends Component {
       return (
         <div>
             <div className="containerMenu">
-              <h1 className="titleCompo">Liste des films : </h1>
+              <h1 className="titleCompo"> Toutes les séances : </h1>
               <div className="ListFilmAdmin scrollbar" id="style-1">
-                {this.state.films.map(film =>
-                  <div key={film.film_id} className="DataListFilmAdmin"><p> {film.film_id} {film.titre}</p></div>
+                {this.state.sessions.map(session =>
+                  <div key={session.seance_id} className="DataListAdmin"><p> {session.seance_id}) {session.titre} | La séance commence le {session.dayweek} {session.date_du_jour}</p></div>
                 )}
               </div>
               <button className="btn green rounded" onClick={this.togglePopup.bind(this)}> Ajouter </button>  
               {this.state.showPopup ?
                 <AddSessionPopup   
-                  text='Ouais le popup ouais'  
+                  text='Ajouter'  
                   closePopup={this.togglePopup.bind(this)}
                 />  
                 : null  

@@ -24,7 +24,7 @@ export default class AddFilms extends Component {
       return (
         <div>
             <div className="containerMenu">
-              <h1 className="titleCompo">Liste des films : </h1>
+              <h1 className="titleCompo">Tout les films : </h1>
               <div className="ListFilmAdmin scrollbar" id="style-1">
                 {this.state.films.map(film =>
                   <div key={film.film_id} className="DataListFilmAdmin"><p> {film.film_id} {film.titre}</p></div>
@@ -33,7 +33,7 @@ export default class AddFilms extends Component {
               <button className="btn green rounded" onClick={this.togglePopup.bind(this)}> Ajouter </button>  
               {this.state.showPopup ?
                 <AddFilmPopup   
-                  text='Ajout'  
+                  text='Ajouter'  
                   closePopup={this.togglePopup.bind(this)}
                 />  
                 : null  

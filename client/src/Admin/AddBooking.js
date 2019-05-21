@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
+
 import AddBookingPopup from './AddBookingPopup.js';
 
 export default class AddBooking extends Component {
   constructor(props) {
     super(props);
-    this.state = {films: []};
+    this.state = {reservations: []};
   }
 
   componentDidMount() {
-    fetch('/films')
+    fetch('/reservations')
       .then(res => res.json())
-      .then(films => this.setState({ films }));
+      .then(reservations => this.setState({ reservations }));
   }
 
   togglePopup() {  
@@ -24,9 +25,9 @@ export default class AddBooking extends Component {
         <div>
             <div className="containerMenu">
               <h1 className="titleCompo">Liste des films : </h1>
-              <div className="ListFilmAdmin scrollbar" id="style-1">
-                {this.state.films.map(film =>
-                  <div key={film.film_id} className="DataListFilmAdmin"><p> {film.film_id} {film.titre}</p></div>
+              <div className="ListAdmin scrollbar" id="style-1">
+                {this.state.reservations.map(resa =>
+                  <div key={resa.reservations_id} className="DataListAdmin"><p> {resa.titre} {resa.users_nom} {resa.users_prenom} {resa.date_du_jour}</p></div>
                 )}
               </div>
               <button className="btn green rounded" onClick={this.togglePopup.bind(this)}> Ajouter </button>  

@@ -15,7 +15,7 @@ export default class SessionsAdmin extends Component {
           <header className="block">
           <Router>
           <SeancesAdminMenu/>
-          <Route exact path='/' component={AddSessions}/>
+          <Route path='/' component={AddSessions}/>
           <Route path='/update' component={UpdateSessions}/>
           <Route path='/remove' component={RemoveSessions}/>
         </Router>
