@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './ImgGallery.css';
 
 class ImgGallery extends Component {
