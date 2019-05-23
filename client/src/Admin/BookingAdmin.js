@@ -10,9 +10,9 @@ export default class BookingAdmin extends Component {
     render() {
       return (
         <div>
-        <div class="titleAdmin"> <p class="titlep">Reservations</p>
+        <div className="titleAdmin"> <p class="titlep">Reservations</p>
         </div>
-        <header class="block">
+        <header className="block">
         <Router>
           <BookingAdminMenu/>
           <Route exact path='/' component={AddBooking}/>

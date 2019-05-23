@@ -1,27 +1,58 @@
 import React, {Component} from 'react';
-import SelectFormSalle from './SelectFormSalle';
-import SelectFormFilm from './SelectFormFilm';
-import DateSelectHoraire from './DateSelectHoraire';
-import SelectFormDimension from './SelectFormDimension';
-import SelectFormLangue from './SelectFormLangue';
+import DatePicker from "react-datepicker";
+ 
+import "react-datepicker/dist/react-datepicker.css";
 
 
 export default class AddSessionPopup extends React.Component { 
     constructor(props) {
         super(props)
         this.state = {
+            salle: '',
+            film: '',
+            startdate: new Date(),
             dayweek: '',
+            dimension: '',
+            langue: '',
             msg: ''
         };
-        this.postContact = this.postContact.bind(this);
+        this.state = {
+            films: [],
+            salles: [],
+            dimensions: [],
+            language: [] 
+        };
+        this.postSession = this.postSession.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    postContact(event) {
-        console.log(this.state.dayweek);
-        event.preventDefault();
-        fetch("/seancesPost", {
+    componentDidMount() {
+        Promise.all([
+            fetch('/salles'),
+            fetch('/films'),
+            fetch('/dimension'),
+            fetch('/langues')
+        ])
+        .then(([res1, res2, res3, res4]) => Promise.all([res1.json(), res2.json(), res3.json(), res4.json()]))
+        .then(([data1, data2, data3, data4]) => this.setState({
+            salles: data1,
+            films: data2,
+            dimensions: data3,
+            language: data4 
+            }));
+      }
+
+      handleChange(date) {
+        this.setState({
+          startdate: date
+        });
+      }
+
+    postSession(e) {
+        e.preventDefault();
+        fetch("/seancespost", {
             method: 'POST',
-             headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(this.state)
         }).then(function(response) {
             if (response.status >= 400) {
@@ -37,6 +68,7 @@ export default class AddSessionPopup extends React.Component {
         }).catch(function(err) {
             console.log(err)
         });
+        console.log(this.state);
     } 
 
   render() {  
@@ -44,14 +76,28 @@ export default class AddSessionPopup extends React.Component {
     <div className='popup'>  
         <div className='innerPopup'>  
             <h1>{this.props.text}</h1>
-            <form autoComplete="off" onSubmit={this.postContact} method="POST">
+            <form autoComplete="off" onSubmit={this.postSession} method="POST">
 
-            <SelectFormSalle/>
+            <label> Salle : </label>
+                <select onChange={e => this.setState({ salle: e.target.value })} value={this.state.salle} name="salle">
+                    {this.state.salles.map(Salles =>
+                        <option key={Salles.salle_id} value={Salles.salle_name}> {Salles.salle_name}</option>
+                    )}
+                </select>
 
-            <SelectFormFilm/>
+            <label> Film : </label>
+                <select onChange={e => this.setState({ film: e.target.value })} value={this.state.film} name="film">
+                    {this.state.films.map(Film =>
+                        <option key={Film.film_id} value={Film.film_id}> {Film.titre} </option>
+                )}
+                </select>
 
-            <DateSelectHoraire/> 
-
+            <DatePicker
+            selected={this.state.startdate}
+            onChange={this.handleChange}
+            showTimeSelect
+            dateFormat="Pp"/>
+            
             <label> Jour : </label>
             <select onChange={e => this.setState({ dayweek: e.target.value })} value={this.state.dayweek}>
                 <option value ="Lundi">Lundi</option>
@@ -63,9 +109,19 @@ export default class AddSessionPopup extends React.Component {
                 <option value="Dimanche">Dimanche</option>
             </select>            
             
-            <SelectFormDimension/>
+            <label> Dimension : </label>
+                <select onChange={e => this.setState({ dimension: e.target.value })} value={this.state.dimension} name="dimension">
+                    {this.state.dimensions.map(dim =>
+                        <option key={dim.dimension_id} value={dim.dimension_id}> {dim.dimension_name} </option>
+                )}
+                </select>
 
-            <SelectFormLangue/>
+                <label> Langue : </label>
+                <select onChange={e => this.setState({ langue: e.target.value })} value={this.state.langue} name="langue">
+                    {this.state.language.map(langue =>
+                        <option key={langue.langue_id} value={langue.langue_id}> {langue.langues_name} </option>
+                )}
+                    </select>
             
             <input type="submit" value="valider"/>
 

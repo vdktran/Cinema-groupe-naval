@@ -5,7 +5,7 @@ export default class SelectFormLangue extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            langage: '',
+            langage: 1,
         };
         this.state = {langues: []};
     }
@@ -20,10 +20,11 @@ export default class SelectFormLangue extends React.Component {
         return (
             <div>
                 <label> Langue : </label>
-                <select onChange={e => this.setState({ langage: e.target.value })} value={this.state.value} name="langue">
+                <select onChange={e => this.setState({ langage: e.target.value })} value={this.state.langage} name="langue">
                     {this.state.langues.map(langue =>
-                        <option key={langue.langue_id} value={langue.langues_name}> {langue.langues_name} </option>
+                        <option key={langue.langue_id} value={langue.langue_id}> {langue.langues_name} </option>
                 )}
+                {console.log(this.state.langage)}
                     </select>
             </div>
         )
