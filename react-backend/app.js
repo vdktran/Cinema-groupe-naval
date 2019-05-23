@@ -47,7 +47,7 @@ app.use('/status', statusRouter);
 app.use('/dimension', dimensionRouter);
 app.use('/seances', sessionRouter);
 app.use('/salles', salleRouter);
-app.use('/seancesPost', sessionPostRouter);
+app.use('/seancespost', sessionPostRouter);
 app.use('/prix', prixRouter);
 app.use('/reservations', reservationRouter);
 

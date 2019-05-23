@@ -6,8 +6,7 @@ var router = express.Router();
 
 
 // GET Data using Express router and a method defined in the Controller
-router.post('/sessionPost', sessions_controller.display_All_Sessions);
-
+router.post('/', sessions_controller.Post_All_Sessions);
 
 // Export Router to app.js
 module.exports = router;
