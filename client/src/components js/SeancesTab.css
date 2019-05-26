@@ -31,10 +31,15 @@
 
 .versions {
     position: relative;
+    margin-left: 30px;
 }
 
 .versions:hover form {
     display: block;
+}
+
+.versions > .seancesItems {
+  width :150px;
 }
 
 form {

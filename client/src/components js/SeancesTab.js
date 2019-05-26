@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import './SeancesTab.css';
 
-class ImgGallery extends Component {
+class SeancesTab extends Component {
     constructor(props) {
         super(props);
-        this.state = { films: [] };
+        this.state = { 
+            films: [],
+            whatday: 'Lundi'
+         };
+
+        this.clickHandler = this.clickHandler.bind(this);
     }
 
-    handleClick = () => {
-
+    clickHandler(e) {
+        this.setState({
+            whatday: e.target.value
+        },function() {
+            this.props.handlerFromParent(this.state.whatday);
+        });
     };
+
+
 
     componentDidMount() {
         fetch('/films')
@@ -21,13 +32,13 @@ class ImgGallery extends Component {
         return (
             <div className="SeancesTab">
                 <div className="SeancesNav">
-                    <div className="seancesItems">Lundi</div>
-                    <div className="seancesItems">Mardi</div>
-                    <div className="seancesItems">Mercredi</div>
-                    <div className="seancesItems">Jeudi</div>
-                    <div className="seancesItems">Vendredi</div>
-                    <div className="seancesItems">Samedi</div>
-                    <div className="seancesItems">Dimanche</div>
+                    <button className="seancesItems" value="Lundi" onClick={this.clickHandler}>Lundi</button>
+                    <button className="seancesItems" value="Mardi" onClick={this.clickHandler}>Mardi</button>
+                    <button className="seancesItems" value="Mercredi" onClick={this.clickHandler}>Mercredi</button>
+                    <button className="seancesItems" value="Jeudi" onClick={this.clickHandler}>Jeudi</button>
+                    <button className="seancesItems" value="Vendredi" onClick={this.clickHandler}>Vendredi</button>
+                    <button className="seancesItems" value="Samedi" onClick={this.clickHandler}>Samedi</button>
+                    <button className="seancesItems" value="Dimanche" onClick={this.clickHandler}>Dimanche</button>
                 </div>
                 <div className="versions">
                 <div className="seancesItems">
@@ -49,4 +60,4 @@ class ImgGallery extends Component {
     }
 }
 
-export default ImgGallery;
+export default SeancesTab;

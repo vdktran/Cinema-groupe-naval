@@ -9,6 +9,8 @@ var router = express.Router();
 
 // GET Data using Express router and a method defined in the Controller
 router.get('/', films_controller.display_all_films);
+router.get('/filmsoftheday/:day', films_controller.display_films_of_the_day);
+
 
 
 

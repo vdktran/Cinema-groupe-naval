@@ -18,51 +18,18 @@ Seances.getAllSeances = function (result) {
 
 };
 
-Seances.getSeancesOfTheDay = function (result) {
+Seances.getSeancesOfTheDay = function (request, result) {
 
-  var date = new Date();
-  var dayinteger = date.getDay();
-  function day() {
-  switch(dayinteger) {
-    case 1 :
-    var day ='Lundi';
-    break;
-
-    case 2 :
-    var day ='Mardi';
-    break;
-
-    case 3 :
-    var day ='Mercredi';
-    break;
-
-    case 4 :
-    var day ='Jeudi';
-    break;
-
-    case 5 :
-    var day ='Vendredi';
-    break;
-
-    case 6 :
-    var day ='Samedi';
-    break;
-
-    case 0 :
-    var day ='Dimanche';
-    break;
-
-  }
-
-  return day;
-}
-  
-  var queryOfTeDay =day();
-
+  // var queryOfTeDay =day();
+  console.log("request : "+request);
+  var queryOfTeDay = request;
+  console.log('lundi : '+request[0]);
   // Database query
-  sql.query('SELECT * from films INNER JOIN seances ON films.film_id = seances.film_id WHERE seances.dayweek=?',[queryOfTeDay], function (err, res, fields) {
+  sql.query('SELECT * from films INNER JOIN seances ON films.film_id = seances.film_id WHERE seances.dayweek=? && seances.film_id=?',queryOfTeDay, function (err, res, fields) {
   if (err) throw err;
+
       result(null, res);
+      console.log(res);
 });
 
 };

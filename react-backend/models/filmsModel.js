@@ -18,6 +18,19 @@ Films.getAllFilms = function (result) {
 
 };
 
+Films.getFilmsOfTheDay = function (request,result) {
+
+  var k = request;
+  console.log(k);
+
+  // Database query
+  sql.query('SELECT * from films INNER JOIN seances ON films.film_id = seances.film_id WHERE seances.dayweek=?',k, function (err, res, fields) {
+  if (err) throw err;
+      result(null, res);
+});
+
+};
+
 
 // Export Object to Controller
 module.exports = Films;
