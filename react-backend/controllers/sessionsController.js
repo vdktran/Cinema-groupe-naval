@@ -1,12 +1,12 @@
 
 // Controller Require Model
-var film = require('../models/filmsModel');
+var Session = require('../models/SessionsModel');
 
 // Define and export a method to be used by the Route
-exports.Display_all_films = function (req, res) {
+exports.Display_all_sessions = function (req, res) {
 
     // Use a method defined in the Model
-    film.getAllfilms(function (err, data) {
+    Session.getAllSessions(function (err, data) {
         if (err) {
             res.send(err);
         }
@@ -16,27 +16,11 @@ exports.Display_all_films = function (req, res) {
     })
 };
 
-exports.Insert_all_films = function (req, res) {
-    var new_film_insert = new film(req.body);
+exports.Insert_all_sessions = function (req, res) {
+    var new_session_insert = new Session(req.body);
 
     // Use a method defined in the Model
-    film.insertAllfilms(new_film_insert, function (err, data) {
-        if (err) {
-            res.send(err);
-        }
-        else {
-            res.json(data);
-            console.log("controller json");
-        }
-    })
-
-};
-
-exports.Update_all_films = function (req, res) {
-    var new_film_update = new film(req.body);
-
-    // Use a method defined in the Model
-    film.updateAllfilms(new_film_update, function (err, data) {
+    Session.insertAllSessions(new_session_insert, function (err, data) {
         if (err) {
             res.send(err);
         }
@@ -48,11 +32,11 @@ exports.Update_all_films = function (req, res) {
 
 };
 
-exports.Delete_all_films = function (req, res) {
-    var new_film_Delete = new film(req.body);
+exports.Update_all_sessions = function (req, res) {
+    var new_session_update = new Session(req.body);
 
     // Use a method defined in the Model
-    film.deleteAllfilms(new_film_Delete, function (err, data) {
+    Session.updateAllSessions(new_session_update, function (err, data) {
         if (err) {
             res.send(err);
         }
@@ -64,11 +48,27 @@ exports.Delete_all_films = function (req, res) {
 
 };
 
-exports.display_films_of_the_day = function (req, res) {
-    var request = [req.params.day];
+exports.Delete_all_sessions = function (req, res) {
+    var new_session_Delete = new Session(req.body);
 
     // Use a method defined in the Model
-    film.getFilmsOfTheDay(request, function (err, data) {
+    Session.deleteAllSessions(new_session_Delete, function (err, data) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json(data);
+            console.log("controller json");
+        }
+    })
+
+};
+
+exports.display_seances_of_the_day = function (req, res) {
+    var request = [req.params.dayweek, req.params.film_id];
+
+    // Use a method defined in the Model
+    Session.getSeancesOfTheDay(request, function (err, data) {
         if (err) {
             res.send(err);
         }
