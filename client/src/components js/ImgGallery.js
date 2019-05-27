@@ -4,8 +4,12 @@ import './ImgGallery.css';
 class ImgGallery extends Component {
   constructor(props) {
     super(props);
-    this.state = { films: [] };
+    this.state = {films: []};
   }
+
+  handleClick = () => {
+    
+  };
 
   componentDidMount() {
     fetch('/films')
@@ -18,11 +22,11 @@ class ImgGallery extends Component {
       <div className="App">
         <h1>Image Gallery</h1>
         <div className="Img_gallery">
-          {this.state.films.map(film =>
-            <div key={film.film_id} className="Img_container">
-              <img key={film.film_id} src={film.img_affiche}></img>
-            </div>
-          )}
+        {this.state.films.map(film =>
+          <div key={film.film_id} className="Img_container">
+          <img key={film.film_id} src={film.img_affiche}></img>
+          </div>
+        )}
         </div>
       </div>
     );

@@ -1,0 +1,22 @@
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+export default class MoreAdminMenu extends Component {
+
+    render() {
+        return (
+            <ul className="header-menu horizontal-list">
+                <li>
+                    <Link to='/' className="header-menu-tab" href="#1"><span className="icon entypo-cog scnd-font-color"></span>Categories/Salles/Prix</Link>
+                </li>
+                <li>
+                    <Link to='/update' className="header-menu-tab" href="#2"><span className="icon entypo-cog scnd-font-color"></span>Status/Dimensions/langues</Link>
+                </li>
+                <li>
+                    <Link to='remove' className="header-menu-tab" href="#3"><span className="icon entypo-cog scnd-font-color"></span>Slider</Link>
+                    {/*                         <a className="header-menu-number" href="#4">5</a> */}
+                </li>
+            </ul>
+        );
+    }
+}
