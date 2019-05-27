@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.LoadingPage {
+  /* background: url("bg.jpg"); */
+  background-color: #a370e6;
+  z-index: 1000000000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: absolute;
+  background-position: center;
+  max-width: 100%;
+  height: 768px;;
+  width: 100%;
+
+
+}
+
+#typeWriting {
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  width: 100%;
+}
+
+.PageSeance {
+  position: absolute;
+  top: 210px;
+  left : 250px;
+}
+
+.buttonTchiTcha {
+  cursor: pointer;
+  white-space: nowrap;
+  width: 200px;
+  height: 70px;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  outline: 0px;
+  background-color: #ff899f;
+  border-style: none;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-top: 25px;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 100px;
+   position: relative;
+  bottom: 200px;
+}
+ 
+
+.buttonTchiTcha:hover {
+  cursor: pointer;
+  white-space: nowrap;
+  width: 200px;
+  height: 70px;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  outline: 0px;
+  background-color: #f6375d;
+  border-style: none;
+  border-radius: 20px;
+}
+
+.FlexLoadingPage {
+  display: flex;
+  
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  grid-area: component;
+  margin-top: 700px;
+  
+}
+
+
+.LoadingPage {
+
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "header slider"
+  "header component"
+  "flexloadingpage flexloadingpage"
+  "footer footer";
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+h1 {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+}
+
+
+

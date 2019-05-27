@@ -1,0 +1,27 @@
+.rowMenu {
+    display: flex;
+}
+
+
+.buttonMenu {
+margin-top: 20px;
+padding: 20px;
+cursor: pointer;
+white-space: nowrap;
+font-size: 25px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 800;
+color: #ff899f;
+width: 20px;
+position: relative;
+right:40px;
+
+}
+#MenuHamburger {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+}
